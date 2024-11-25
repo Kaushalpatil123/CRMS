@@ -6,13 +6,14 @@ const leadRoutes = require('./routes/leadRoute');
 require("dotenv").config();
 const path = require('path');
 
-// app.use(
-//   cors({
-//     origin: [/^http:\/\/localhost:\d+$/, "https://crms-frontend-sigma.vercel.app"],
-//     credentials: true,
-//     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-//   })
-// );
+app.use(
+  cors({
+    // origin: [/^http:\/\/localhost:\d+$/, "https://crms-frontend-sigma.vercel.app"],
+    origin: ["https://crms-frontend-sigma.vercel.app"],
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+  })
+);
 app.use('/public', express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 
