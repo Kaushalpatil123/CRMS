@@ -1,0 +1,147 @@
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { fetchAllCustomers } from 'pages/utils/customers/api';
+import AddCustomer from './addCustomer';
+
+const SelectCustomer = ({ open, handleClose, onCustomerSelect }) => {
+  const [customers, setCustomers] = useState([]);
+  const [filteredCustomers, setFilteredCustomers] = useState([]);
+  const [selectedCustomer, setSelectedCustomer] = useState(null);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [openAddCustomer, setOpenAddCustomer] = useState(false);
+  
+
+  const navigate = useNavigate();
+
+
+  const handleOpenAddCustomer = () => setOpenAddCustomer(true);
+  const handleCloseAddCustomer = () => setOpenAddCustomer(false);
+
+
+
+  // Fetch customers when the component mounts or `open` changes
+  useEffect(() => {
+    if (open) {
+      fetchCustomers();
+    }
+  }, [open]);
+
+  // Function to fetch customers from the API
+  const fetchCustomers = async () => {
+    try {
+      const data = await fetchAllCustomers();
+      setCustomers(data);
+      setFilteredCustomers(data);
+    } catch (error) {
+      console.error('Error fetching customers:', error);
+    }
+  };
+
+  // Function to handle customer selection
+  const handleCustomerSelect = (customer) => {
+    // Debugging log
+    console.log('Customer Selected:', customer);
+  
+    setSelectedCustomer(customer);
+
+    // Ensure customerName is correctly set from customer object
+    const customerName = `${customer.firstName || ''} ${customer.lastName || ''}`.trim();
+  
+    if (onCustomerSelect) {
+      console.log('Calling onCustomerSelect with:', {
+        customerId: customer._id,
+        customerName: customerName,
+      }); // Debug log
+      onCustomerSelect({
+        customerId: customer._id,
+        customerName: customerName,
+      });
+    }
+  
+    handleClose(); // Ensure this closes the modal
+  };
+
+  // Function to handle search input change
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value);
+    const filtered = customers.filter((customer) =>
+      `${customer.firstName} ${customer.lastName} ${customer.companyName}`
+        .toLowerCase()
+        .includes(e.target.value.toLowerCase())
+    );
+    setFilteredCustomers(filtered);
+  };
+
+  // Return null if the modal is not open
+  if (!open) return null;
+
+  return (
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+      <div className="bg-white rounded-lg w-1/4 max-w-1/4">
+        <div className="flex items-center justify-between px-4 py-2 border-b">
+          <h1 className="text-2xl font-semibold my-2">Select Customer</h1>
+          <button
+            className="text-red-600 hover:text-re-700"
+            onClick={handleClose}
+          >
+            &times;
+          </button>
+        </div>
+        <div className="p-4">
+          <input
+            type="text"
+            value={searchTerm}
+            onChange={handleSearch}
+            placeholder="Search"
+            className="bg-white border border-gray-300 text-gray-800 sm:text-sm rounded-md focus:ring-red-600 focus:border-red-600 focus:outline-none block w-full p-2.5"
+          />
+          <div className="mt-4 bg-white border border-stone-200 rounded-lg max-h-48 overflow-y-scroll scrollbar-thin scrollbar-thumb-gray-400">
+            {filteredCustomers.length > 0 ? (
+              filteredCustomers.map((customer) => (
+                <React.Fragment key={customer._id}>
+                  <div
+                    className="py-3 px-2 cursor-pointer hover:bg-gray-100"
+                    onClick={() => handleCustomerSelect(customer)}
+                  >
+                    {customer.firstName} {customer.lastName} ({customer.companyName})
+                  </div>
+                  <hr className="border-t" />
+                </React.Fragment>
+              ))
+            ) : (
+              <div className="py-3 px-2 text-gray-500">No customers found</div>
+            )}
+          </div>
+          <div className="flex justify-center mt-4">
+            <button
+              className="flex items-center px-4 py-2.5 bg-red-600 text-white font-semibold rounded hover:bg-red-700"
+              // onClick={() => navigate(`/apps/quote/addCustomer`)} 
+              onClick={handleOpenAddCustomer}
+            >
+              <svg
+                className="w-5 h-5 mr-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M12 4v16m8-8H4"
+                ></path>
+              </svg>
+              Add New Customer
+            </button>
+
+            <AddCustomer open={openAddCustomer} handleClose={handleCloseAddCustomer} />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default SelectCustomer;

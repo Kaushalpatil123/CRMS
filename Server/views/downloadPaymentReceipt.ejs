@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <title>Payment Template</title>
+    <style>
+        header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            background: #FFFFFF;
+            gap: 10px;
+            padding: 10px 0px;
+            letter-spacing: 0.05em;
+            border: 1px solid #00000099;
+            position: relative;
+        }
+
+        .GSTIN {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding-left: 20px;
+            padding-top: 30px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            font-size: 20;
+        }
+
+        header hr {
+            border: 1.5px solid #AEAEAE;
+            width: 35%;
+        }
+
+        .header-address {
+            font-size: 15px;
+            font-weight: 400;
+        }
+
+        .header-mobile {
+            display: flex;
+            font-size: 13px;
+            font-weight: 400;
+        }
+
+        .header-mobile div {
+            padding: 0px 10px;
+        }
+
+        .header-mobile .mob {
+            border-right: 1px solid #000000;
+        }
+
+        .header-com {
+            display: flex;
+            font-size: 13px;
+            font-weight: 400;
+        }
+
+        .header-com div {
+            padding: 0px 10px;
+        }
+
+        .header-com .email {
+            border-right: 1px solid #000000;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            width: 100%;
+            height: auto;
+            padding: 2px 5px;
+            background: #FFFFFF;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .container {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 45% 55%;
+            gap: 10px;
+            background: #F7F7F7;
+            overflow: hidden;
+            padding: 10px 10px 25px 10px;
+            border: 1px solid #0000004D;
+        }
+
+        .left-column {
+            display: flex;
+            flex-direction: column;
+            background: #F3F3F3;
+            justify-content: space-between;
+            gap: 5px;
+        }
+
+        .right-column {
+            display: grid;
+            width: 100%;
+            gap: 10px;
+            grid-template-columns: 1fr 1fr;
+            background: #F3F3F3;
+            border: 1px solid #00000099;
+            box-sizing: border-box;
+            overflow: hidden;
+        }
+
+        .box1 {
+            flex: 1;
+            border: 1px solid #00000099;
+        }
+
+        .recieved-title {
+            display: inline-block;
+            background: #5581B4;
+            color: white;
+            padding: 5px 15% 5px 5px;
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .left-top {
+            display: grid;
+            width: 100%;
+            grid-template-columns: 65% 35%;
+            padding: 10px;
+            justify-content: center;
+            gap: 7px;
+        }
+
+        .customer-details {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .customer-details input,
+        select {
+            width: 100%;
+            padding: 7px;
+            margin-bottom: 5px;
+            border-radius: 8px;
+            border: 1px solid #00000059;
+        }
+
+        .customer-name {
+            font-weight: 500;
+            font-size: 12px;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 5px;
+            border-radius: 8px;
+            background: #FFFFFF;
+            border: 1px solid #00000059;
+        }
+
+        .textarea-address {
+            font-weight: 500;
+            font-size: 12px;
+            min-height: 70px;
+            padding: 10px;
+            /* overflow-y: auto; */
+            background: #FFFFFF;
+            width: 100%;
+            margin-bottom: 5px;
+            border-radius: 8px;
+            border: 1px solid #00000059;
+            resize: none;
+        }
+
+        .numbers {
+            display: flex;
+            gap: 10px;
+        }
+
+        .numbers input {
+            width: 50%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .numbers-div {
+            font-weight: 500;
+            font-size: 11px;
+            width: 50%;
+            background: #FFFFFF;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .new-customer button {
+            padding: 6px 35px 5px 8px;
+            margin: 10px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .plus {
+            margin: 0px 8px 0px 0px;
+        }
+
+        .button {
+            background: #6A89F8;
+            color: white;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px;
+            font-weight: 500;
+            font-size: 12px;
+            cursor: pointer;
+            border: 1px solid #00000059
+        }
+
+        .customer {
+            text-align: center;
+        }
+
+        table {
+            background: #FFFFFF;
+            font-size: 12px;
+            font-weight: 500;
+            border: 1px solid #00000080;
+            border-collapse: collapse;
+        }
+
+        .date-receipt-table {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .date-receipt-table .date,
+        .duedate {
+            width: 100%;
+            padding: 5px 2px;
+        }
+
+        .date-receipt-table .receipt {
+            width: 100%;
+            padding: 5px 2px;
+        }
+
+        .received-table td:first-child {
+            width: 45%;
+        }
+
+        .received-table td:last-child {
+            width: 55%;
+        }
+
+        .receiptDate {
+            border: none;
+            /* padding: 0px 40px; */
+        }
+
+        .amount-received {
+            display: grid;
+            gap: 4px;
+            width: 100%;
+            grid-template-columns: 50% 50%;
+            /* padding: 10px; */
+            border: 1px solid #00000099;
+        }
+
+        .amount-title {
+            display: flex;
+            flex-direction: row;
+            gap: 1px;
+        }
+
+        .amount-title-str {
+            display: inline-block;
+            background: #5581B4;
+            color: white;
+            padding: 5px 8px 5px 5px;
+            font-size: 14px;
+            font-weight: 500;
+            /* margin-bottom: 10px; */
+        }
+
+        .amount-title-num {
+            display: inline-block;
+            background: #5581B4;
+            color: white;
+            padding: 5px 16px 5px 5px;
+            font-size: 14px;
+            font-weight: 500;
+            /* margin-bottom: 10px; */
+        }
+
+        .amount-recieved-section {
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            height: 100%;
+            overflow: hidden;
+            max-height: 120px;
+        }
+
+        .amount-recieved-section input {
+            width: 100%;
+            padding: 7px;
+            margin-bottom: 5px;
+            border-radius: 8px;
+            border: 1px solid #00000059;
+        }
+
+        .amount-received-products {
+            font-weight: 500;
+            font-size: 12px;
+            background: #FFFFFF;
+            width: 100%;
+            padding: 7px;
+            margin-bottom: 5px;
+            border-radius: 8px;
+            border: 1px solid #00000059;
+        }
+
+        .product {
+            text-align: end;
+            margin-bottom: 5px;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .product button {
+            padding: 7px 28px 6px 8px;
+            margin: 10px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+
+        .amount-favor-section {
+            padding: 0px 10px 10px 0px;
+        }
+
+        .amount-favor-title {
+            background: #5581B4;
+            color: white;
+            padding: 5px;
+            font-size: 14px;
+            font-weight: 500;
+            margin-top: 5px;
+        }
+
+        .textarea-amount {
+            min-height: 140px;
+            font-weight: 500;
+            font-size: 12px;
+            background: #FFFFFF;
+            width: 100%;
+            padding: 7px;
+            /* margin-bottom: 5px; */
+            border: 1px solid #00000059;
+            resize: none;
+            overflow-y: auto;
+        }
+
+        .account-title {
+            display: inline-block;
+            background: #5581B4;
+            color: white;
+            padding: 5px 30% 5px 5px;
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .account-details {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            gap: 10px;
+            overflow: hidden;
+            /* border: 1px solid black; */
+        }
+
+        .account-details>div {
+            flex-grow: 1;
+        }
+
+        .table-div {
+            width: 100%;
+            padding: 0 3px;
+        }
+
+        .account-table {
+            width: calc(100% - 5px);
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+
+        .account-table td {
+            padding: 10px 5px;
+        }
+
+        .label-cell {
+            width: 35%;
+        }
+
+        .value-cell {
+            width: 65%;
+            text-align: left;
+        }
+
+        .double-row-height {
+            height: calc(2 * 30px);
+            text-align: start;
+        }
+
+        .account-bottom {
+            display: flex;
+            flex-direction: column;
+            /* align-items: flex-end; */
+            /* gap: 5px; */
+            padding-top: 25px;
+            justify-content: start;
+        }
+
+        .account-bottom input {
+            width: 100%;
+            padding: 7px;
+            margin-bottom: 5px;
+            border-radius: 8px;
+            border: 1px solid #00000059;
+        }
+
+        .payment-received-by {
+            display: inline-block;
+            background: #FFFFFF;
+            padding: 8px;
+            margin: 5px 5px;
+            font-size: 12px;
+            font-weight: 500;
+            border-radius: 8px;
+            border: 1px solid #00000099;
+            width: 45%;
+        }
+
+        .executive-name {
+            display: inline-block;
+            background: #FFFFFF;
+            padding: 8px;
+            margin: 5px 5px;
+            font-size: 12px;
+            font-weight: 500;
+            border-radius: 8px;
+            border: 1px solid #00000099;
+            width: 45%;
+        }
+
+        .payment-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            height: 90%;
+            gap: 2px;
+        }
+
+        .payment {
+            display: flex;
+            flex-direction: row;
+            padding: 2px 10px;
+            justify-content: space-between;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .payment input {
+            width: 100%;
+            padding: 7px;
+            margin-bottom: 5px;
+            border-radius: 8px;
+            border: 1px solid #00000059;
+        }
+
+        .cash input {
+            height: calc(2 * 30px);
+        }
+
+        .check.payment {
+            display: grid;
+            grid-template-columns: 32% 65%;
+        }
+
+        .check input {
+            flex-grow: 1;
+        }
+
+        .cheque-input {
+            width: auto;
+            flex-grow: 0;
+            object-fit: contain;
+        }
+
+        .greyed-out {
+            color: #303030;
+            pointer-events: none;
+            opacity: 0.2;
+        }
+
+
+
+        .signature-section {
+            background: #FFFFFF;
+            border: 1px solid #0000004D;
+            margin: 5px;
+            max-height: 40%;
+            width: 350px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .signature-section img {
+            max-height: 80%;
+            max-width: 100%;
+            object-fit: contain;
+            padding: 2px 0pxy;
+        }
+
+        .signature {
+            font-weight: 500;
+            font-size: 12px;
+            text-align: end;
+            color: #000;
+            padding: 5px;
+            white-space: nowrap;
+            width: 100%;
+            box-sizing: border-box;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* ***************************************************************************** */
+
+        ::placeholder {
+            color: black;
+        }
+
+        .amount-recieved-textarea {
+            height: calc(100% - 30px);
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="GSTIN">GSTIN: 07AWKPV4949H1ZT</div>
+        <img src="http://localhost:8800/public/temp/image.png" height="66px" width="239px">
+        <div class="header-address">
+            2nd Floor, E2-258, Above Petal Valley School, Shastri Nagar, New Delhi - 110052
+        </div>
+        <hr>
+        <div class="header-mobile">
+            <div class="mob">Mob :- 91-7827677274</div>
+            <div class="mob">Mob :- 91-7827677274</div>
+            <div>Landline - 011- 44723265</div>
+        </div>
+        <div class="header-com">
+            <div class="email">Email id: sales@osmsturf.com </div>
+            <div>www.osmsturf.com</div>
+        </div>
+    </header>
+    <div class="container">
+        <div class="left-column">
+            <div class="box1">
+                <div class="recieved-title">Received From:
+                </div>
+                <div class="left-top">
+                    <div class="customer-details">
+                        <div class="customer-name">
+                            <%= payment.customer.firstName %>
+                        </div>
+                        <div class="textarea-address" placeholder="Enter Address" required rows="3">
+                            <%= payment.address %>
+                        </div>
+                        <div class="numbers">
+                            <div class="numbers-div">
+                                <%= payment.mobileNumber %>
+                            </div>
+                            <div class="numbers-div">
+                                <%= payment.alternateNumber %>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="new-customer">
+                        <div class="date-receipt-table">
+                            <table border="1" cellpadding="1" cellspacing="0" width="100%" class="received-table">
+                                <tr>
+                                    <td class="date">Date:</td>
+                                    <td>
+                                        <div class="receiptDate">
+                                            <%= payment.receiptDate %>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="receipt">Receipt No:</td>
+                                    <td>
+                                        <div class="receiptDate">
+                                            <%= payment.receiptNumber %>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="duedate">Due Date:</td>
+                                    <td>
+                                        <div class="receiptDate">
+                                            <%= payment.dueDate %>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="box2">
+                <div class="amount-received">
+                    <div>
+                        <div class="amount-title">
+                            <div class="amount-title-str">Amount received:</div>
+                            <div class="amount-title-num">
+                                <%=payment.amountReceived%>
+                            </div>
+                        </div>
+                        <div class="amount-recieved-section">
+                            <div class="amount-received-products">
+                                <%= payment.products %>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="amount-favor-section">
+                        <div class="amount-favor-title">Amount received in favor of:</div>
+                        <div class="textarea-amount">
+                            <%= payment.amountReceivedInFavourOf %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-column">
+            <div class="">
+                <div class="account-title">Account Details</div>
+                <div class="section account-details">
+                    <div class="table-div">
+                        <table class="account-table" border="1" cellpadding="5" cellspacing="0" width="100%">
+                            <tr>
+                                <td class="label-cell">Total Due Amount:</td>
+                                <td class="value-cell">
+                                    Rs. <%= payment.totalDueAmount %>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="label-cell">Amount Paid:</td>
+                                <td class="value-cell">
+                                    Rs. <%= payment.amountPaid %>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="label-cell">Balance Due:</td>
+                                <td class="value-cell">
+                                    Rs. <%= payment.balanceDue %>
+                                </td>
+                            </tr>
+                            <tr class="double-row-height">
+                                <td colspan="2" class="label-cell">
+                                    <%= payment.description %>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="account-bottom">
+                        <label class="payment-received-by">Payment Received By:</label>
+                        <div class="select-agent">
+                        </div>
+                        <div class="executive-name">
+                            <%= payment.executive %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="account-title">Payment Mode</div>
+                <div class="payment-section">
+                    <div class="cash payment <%= payment.paymentMode === 'CASH' ? '' : 'greyed-out' %>">
+                        <input type="text" placeholder="CASH">
+                    </div>
+                    <div class="check payment <%= payment.paymentMode === 'CHEQUE' ? '' : 'greyed-out' %>   ">
+                        <input type="text" placeholder="Cheque" class="cheque-input">
+                        <input type="text" placeholder="<%=payment.chequeDetails%>">
+                    </div>
+                    <div
+                        class="payment-mode online payment <%= payment.paymentMode === 'ONLINE' ? '' : 'greyed-out' %>">
+                        <input type="text" placeholder="Online" class="online-input">
+                            <input type="text" placeholder="<%= payment.onlinePaymentDetails.mode %>">
+                            <input type="text" placeholder="<%= payment.onlinePaymentDetails.bank %>">
+                    </div>
+                    <div class="signature-section">
+                        <img src="<%= payment.authorizedSignatory %>" alt="">
+                        <div class="signature">Authorized Signatory</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
