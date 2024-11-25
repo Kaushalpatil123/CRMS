@@ -12,7 +12,7 @@ app.use(
     // origin: ["https://crms-frontend-sigma.vercel.app"],
     origin: [/^http:\/\/localhost:\d+$/, "http://localhost:3000","https://crms-frontend-sigma.vercel.app",],
     credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+    // methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
   })
 );
 app.use('/public', express.static(path.join(__dirname, 'public')));
