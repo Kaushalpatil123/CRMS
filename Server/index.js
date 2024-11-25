@@ -8,7 +8,7 @@ const path = require('path');
 
 app.use(
   cors({
-    origin: [/^http:\/\/localhost:\d+$/, "http://localhost:3000","crms-peach.vercel.app"],
+    origin: [/^http:\/\/localhost:\d+$/, "http://localhost:3000","https://crms-peach.vercel.app/"],
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
   })
