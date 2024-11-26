@@ -8,10 +8,11 @@ const path = require('path');
 
 app.use(
   cors({
+    origin:"*"
     // origin: [/^http:\/\/localhost:\d+$/, "https://crms-frontend-sigma.vercel.app"],
     // origin: ["https://crms-frontend-sigma.vercel.app"],
-    origin: [/^http:\/\/localhost:\d+$/, "http://localhost:3000","https://crms-frontend-sigma.vercel.app",],
-    credentials: true,
+    // origin: [/^http:\/\/localhost:\d+$/, "http://localhost:3000","https://crms-frontend-sigma.vercel.app",],
+    // credentials: true,
     // methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
   })
 );
