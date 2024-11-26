@@ -6,16 +6,21 @@ const leadRoutes = require('./routes/leadRoute');
 require("dotenv").config();
 const path = require('path');
 
+// Define allowed origins (based on environment)
+const allowedOrigins = process.env.NODE_ENV === 'production'
+  ? ['https://crms-frontend-sigma.vercel.app'] // Only allow production frontend
+  : ['http://localhost:3000', 'http://localhost:4200']; // Allow local development servers
+
+// Configure CORS middleware
 app.use(
   cors({
-    origin:"*"
-    // origin: [/^http:\/\/localhost:\d+$/, "https://crms-frontend-sigma.vercel.app"],
-    // origin: ["https://crms-frontend-sigma.vercel.app"],
-    // origin: [/^http:\/\/localhost:\d+$/, "http://localhost:3000","https://crms-frontend-sigma.vercel.app",],
-    // credentials: true,
-    // methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+    origin: allowedOrigins,   // Allow only trusted origins
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"], // Allow these methods
+    allowedHeaders: ["Content-Type", "Authorization"], // Allow these headers
+    credentials: true,  // Allow credentials (cookies, HTTP authentication)
   })
 );
+
 app.use('/public', express.static(path.join(__dirname, 'public')));
 app.use(express.json());
 
@@ -25,7 +30,7 @@ const userRoutes = require("./routes/user");
 const quotationRoutes = require("./routes/quotation.js");
 const customerRoutes = require("./routes/customerRoute.js");
 const prospectRoutes = require('./routes/prospect.js');
-const invoiceRoutes = require('./routes/invoicesRoute.js')
+const invoiceRoutes = require('./routes/invoicesRoute.js');
 const productRoutes = require('./routes/product.js');
 const categoryRoutes = require('./routes/category.js');
 const statusRoutes = require('./routes/status.js');
@@ -34,7 +39,7 @@ const stageRoutes = require('./routes/prospectStage.js');
 const purchaseRoutes = require('./routes/purchase.js');
 const contactusRoutes = require('./routes/contactus.js');
 const userActivityRoutes = require('./routes/userActivity.js');
-const bankdetailRoutes= require("./routes/bankdetail.js");
+const bankdetailRoutes = require("./routes/bankdetail.js");
 const paymentRoutes = require('./routes/payment.js');
 const userController = require("./controllers/user");
 
@@ -47,7 +52,7 @@ app.use("/api/quotation", quotationRoutes);
 app.use('/api/leads', leadRoutes);
 app.use('/api/customer', customerRoutes);
 app.use('/api/prospect', prospectRoutes);
-app.use('/api/invoice',invoiceRoutes);
+app.use('/api/invoice', invoiceRoutes);
 app.use('/api/product', productRoutes);
 app.use('/api/category', categoryRoutes);
 app.use('/api/status', statusRoutes);
@@ -58,11 +63,12 @@ app.use('/api/contactus', contactusRoutes);
 app.use('/api/userActivity', userActivityRoutes);
 app.use('/api/bankdetail', bankdetailRoutes);
 app.use('/api/payment', paymentRoutes);
+
 connectDB()
   .then(() => {
     userController.createDefaultUsers();
     app.listen(PORT, () => {
-      console.log(`Server start http://localhost:${PORT}`);
+      console.log(`Server started on http://localhost:${PORT}`);
     });
   })
   .catch((err) => {
