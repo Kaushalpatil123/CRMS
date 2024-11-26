@@ -1,7 +1,7 @@
+const cors = require("cors");
 const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 8800;
-const cors = require("cors");
 const leadRoutes = require('./routes/leadRoute');
 require("dotenv").config();
 const path = require('path');
@@ -11,15 +11,30 @@ const allowedOrigins = process.env.NODE_ENV === 'production'
   ? ['https://crms-frontend-sigma.vercel.app'] // Only allow production frontend
   : ['http://localhost:3000', 'http://localhost:4200']; // Allow local development servers
 
-// Configure CORS middleware
-app.use(
-  cors({
-    origin: allowedOrigins,   // Allow only trusted origins
-    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"], // Allow these methods
-    allowedHeaders: ["Content-Type", "Authorization"], // Allow these headers
-    credentials: true,  // Allow credentials (cookies, HTTP authentication)
-  })
-);
+// // Configure CORS middleware
+// app.use(
+//   cors({
+//     origin: allowedOrigins,   // Allow only trusted origins
+//     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"], // Allow these methods
+//     allowedHeaders: ["Content-Type", "Authorization"], // Allow these headers
+//     credentials: true,  // Allow credentials (cookies, HTTP authentication)
+//   })
+// );
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true, // Allow cookies or credentials
+};
+
+app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
 
 app.use('/public', express.static(path.join(__dirname, 'public')));
 app.use(express.json());
