@@ -380,7 +380,7 @@ const LeadsTable = () => {
 
                                         {/* Buttons */}
                                         <div className="flex justify-end gap-2 mt-4 mr-5 relative">
-                                            <button
+                                            {/* <button
                                                 className="bg-[#FF975C] text-white py-2 px-4 rounded-md hover:bg-orange-500"
                                                 // onClick={() =>
                                                     // navigate(`/apps/payment_receipts/view_payment_receipt/${item._id}`, {
@@ -390,7 +390,7 @@ const LeadsTable = () => {
                                                 onClick={() => handleViewReceipt(item._id)}
                                             >
                                                 View Full Receipt
-                                            </button>
+                                            </button> */}
                                             <button
                                                 className="bg-[#F96363] text-black py-2 px-4 rounded-md hover:bg-[#dc5050]"
                                                 onClick={() =>

@@ -451,7 +451,7 @@ const Sidebar = () => {
           className="w-full h-full"
         >
           <Box
-          className="w-full h-full bg-cyan-400"
+          className="w-full h-full bg-white"
         >              <img src={AppLogo} alt="Selected" className="object-cover h-20 w-full" />
 </Box>
           

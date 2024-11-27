@@ -25,7 +25,7 @@ import {
   ClickAwayListener,
 } from '@mui/material';
 import SignatureCanvas from './signatureCanvas';
-import AppLogo from '../../../assets/images/icons/appLogo.png';
+import AppLogo from '../../../assets/images/crmslogo.PNG';
 import ControlPointOutlinedIcon from '@mui/icons-material/ControlPointOutlined';
 import { useNavigate, useLocation, useParams } from 'react-router-dom';
 import { format, parseISO } from 'date-fns';
@@ -704,7 +704,7 @@ const MoneyReceipt = () => {
 
             <Box className='w-[99%] mx-auto'>
               <Box className='flex flex-col border border-rgba(0,0,0,0.6) items-center'>
-                <Stack direction="row" className='flex w-full relative'>
+                {/* <Stack direction="row" className='flex w-full relative'>
                   <Box className="absolute top-5 left-5">
                     <Typography className='text-[20px]' sx={{ fontFamily: 'inter', fontWeight: 400, lineHeight: '17px' }}>GSTIN:07AWKPV4949H1ZT</Typography>
 
@@ -742,9 +742,7 @@ const MoneyReceipt = () => {
                       </Typography>
                     </Box>
                   </Box>
-
-
-                </Stack>
+                </Stack> */}
 
               </Box>
               <Box className='border-x border-b border-rgba(0,0,0,0.3) flex py-4 px-2 gap-2'>
