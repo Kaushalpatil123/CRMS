@@ -3,8 +3,8 @@ import { TextField, Button, Dialog, DialogActions, DialogContent, DialogTitle } 
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import toast, { Toaster } from 'react-hot-toast';
-import logo from '../../../assets/images/logo.png';
-import backgroundImage from '../../../assets/images/background.png';
+import logo from '../../../assets/images/crmslogo.PNG';
+import backgroundImage from '../../../assets/images/crmsbackdround.png';
 import JWTContext from '../../../contexts/JWTContext';
 import useScriptRef from '../../../hooks/useScriptRef';
 import { Link } from 'react-router-dom';
@@ -76,13 +76,13 @@ const Login = () => {
   };
 
   return (
-    <div className="h-screen bg-cover bg-center flex" style={{ backgroundImage: `url(${backgroundImage})` }}>
-      <div className="absolute top-4 left-4">
-        <img src={logo} alt="Logo" className="w-32" />
+    <div className="h-screen justify-end align-middle items-center bg-cover bg-center" style={{ backgroundImage: `url(${backgroundImage})` }}>
+      <div className="flex justify-center align-middle items-center py-3">
+        <img src={logo} alt="Logo" className="w-60 rounded" />
       </div>
 
-      <div className="flex-grow flex items-center justify-end pr-8">
-        <div className="w-full bg-[#F7F7F7] bg-opacity-90 rounded-lg p-8" style={{ maxWidth: '700px', height: '637px' }}>
+      <div className="flex-grow flex justify-center align-middle items-center pt-10">
+        <div className="w-full bg-[#F7F7F7] bg-opacity-90 rounded-lg p-8" style={{ maxWidth: '700px' }}>
           <Formik initialValues={{ email: '', password: '', submit: null }} validationSchema={validationSchema} onSubmit={handleSubmit}>
             {({ isSubmitting }) => (
               <Form className="space-y-5 flex flex-col items-center">
@@ -97,8 +97,13 @@ const Login = () => {
                     <span className="font-semibold">Let's get started!</span>
                   </p>
                 </div>
+                <div className='justify-center align-middle items-center text-center'>
+                  <p className='font-semibold'>For Testing</p>
+                  <p>ID:- <span>admin@gmail.com</span></p>
+                  <p>Password:- <span>admin</span></p>
+                </div>
 
-                <p className="text-black text-center font-bold relative" style={{ marginTop: '60px', fontSize: '14px', display: 'inline-block', paddingBottom: '5px' }}>
+                <p className="text-black text-center font-bold relative" style={{ marginTop: '30px', fontSize: '14px', display: 'inline-block', paddingBottom: '5px' }}>
                   Sign in Access
                   <span style={{ position: 'absolute', bottom: '0', left: '50%', transform: 'translateX(-50%)', width: '189px', height: '2px', backgroundColor: '#F63642' }}></span>
                 </p>
