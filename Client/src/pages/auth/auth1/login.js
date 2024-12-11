@@ -96,7 +96,7 @@ const Login = () => {
             {({ isSubmitting }) => (
               <Form className="space-y-5 flex flex-col items-center">
                 <h1 className="siz font-semibold text-black text-center pb-2 relative" style={{ fontSize: '30px', display: 'inline-block', paddingBottom: '10px' }}>
-                  WELCOME BACK!
+                  WELCOME
                   <span style={{ position: 'absolute', bottom: '0', left: '50%', transform: 'translateX(-50%)', width: '339px', height: '4px', backgroundColor: '#F63642' }}></span>
                 </h1>
 
