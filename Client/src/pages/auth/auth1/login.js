@@ -76,13 +76,22 @@ const Login = () => {
   };
 
   return (
-    <div className="h-screen justify-end align-middle items-center bg-cover bg-center" style={{ backgroundImage: `url(${backgroundImage})` }}>
+    <div className="h-full pb-10 justify-end align-middle items-center bg-cover bg-center"
+    // style={{ backgroundImage: `url(${backgroundImage})` }}
+    >
       <div className="flex justify-center align-middle items-center py-3">
         <img src={logo} alt="Logo" className="w-60 rounded" />
       </div>
 
-      <div className="flex-grow flex justify-center align-middle items-center pt-10">
-        <div className="w-full bg-[#F7F7F7] bg-opacity-90 rounded-lg p-8" style={{ maxWidth: '700px' }}>
+      <div className="flex-grow flex justify-center align-middle items-center pt-10 mb-20">
+        <div
+          className="w-full bg-opacity-90 rounded-lg p-8"
+          style={{
+            maxWidth: '700px',
+            background: 'linear-gradient(90deg, #93d9f3, #bfc4f0)',
+            boxShadow: 'rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px',
+          }}
+        >
           <Formik initialValues={{ email: '', password: '', submit: null }} validationSchema={validationSchema} onSubmit={handleSubmit}>
             {({ isSubmitting }) => (
               <Form className="space-y-5 flex flex-col items-center">
