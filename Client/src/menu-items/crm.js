@@ -752,75 +752,75 @@ const Sidebar = () => {
             <Typography variant="h6" sx={{ padding: '0.5rem 0', fontWeight: 'bold' }} className="pl-2 mt-5">
               FINANCE
             </Typography>
-            // <List sx={{ padding: '0 18px 0 6px', backgroundColor: 'rgb(247,247,247)' }} className="flex flex-col gap-2">
-            //   <ListItem
-            //     button
-            //     onClick={() => handleMenuItemClick('Invoice')}
-            //     sx={{
-            //       borderRadius: '5px',
-            //       marginLeft: '8px',
-            //       padding: 0,
-            //       color: 'inherit',
-            //       backgroundColor: selectedMenuItem === 'Invoice' ? '#C7DBA0' : 'rgb(247,247,247)',
-            //       '&:hover': {
-            //         backgroundColor: selectedMenuItem === 'Invoice' ? '#C7DBA0' : 'rgb(247,247,247)'
-            //       }
-            //     }}
-            //   >
-            //     <ListItemIcon
-            //       sx={{
-            //         color: selectedMenuItem === 'Invoice' ? '#779E40' : 'inherit',
-            //         backgroundColor: selectedMenuItem === 'Invoice' ? '#779E40' : 'inherit',
-            //         display: 'flex',
-            //         justifyContent: 'center',
-            //         alignItems: 'center',
-            //         marginRight: '0.5rem',
-            //         borderRadius: '5px',
-            //         width: '30px',
-            //         height: '30px'
-            //       }}
-            //     >
-            //       <EmojiPeopleIcon
-            //         className={`${selectedMenuItem === 'Invoice' ? 'text-white' : 'bg-stone-100'}`}
-            //         sx={{ fontSize: '20px' }}
-            //       />
-            //     </ListItemIcon>
-            //     <ListItemText primary="INVOICE" />
-            //   </ListItem>
-            //   <ListItem
-            //     button
-            //     onClick={() => handleMenuItemClick('Quotation')}
-            //     sx={{
-            //       borderRadius: '5px',
-            //       marginLeft: '8px',
-            //       padding: 0,
-            //       color: 'inherit',
-            //       backgroundColor: selectedMenuItem === 'Quotation' ? '#C7DBA0' : 'rgb(247,247,247)',
-            //       '&:hover': {
-            //         backgroundColor: selectedMenuItem === 'Quotation' ? '#C7DBA0' : 'rgb(247,247,247)'
-            //       }
-            //     }}
-            //   >
-            //     <ListItemIcon
-            //       sx={{
-            //         color: selectedMenuItem === 'Quotation' ? '#779E40' : 'inherit',
-            //         backgroundColor: selectedMenuItem === 'Quotation' ? '#779E40' : 'inherit',
-            //         display: 'flex',
-            //         justifyContent: 'center',
-            //         alignItems: 'center',
-            //         marginRight: '0.5rem',
-            //         borderRadius: '5px',
-            //         width: '30px',
-            //         height: '30px'
-            //       }}
-            //     >
-            //       <RequestQuoteIcon
-            //         className={`${selectedMenuItem === 'Quotation' ? 'text-white' : 'bg-stone-100'}`}
-            //         sx={{ fontSize: '20px' }}
-            //       />
-            //     </ListItemIcon>
-            //     <ListItemText primary="QUOTATION" />
-            //   </ListItem>
+            <List sx={{ padding: '0 18px 0 6px', backgroundColor: 'rgb(247,247,247)' }} className="flex flex-col gap-2">
+              <ListItem
+                button
+                onClick={() => handleMenuItemClick('Invoice')}
+                sx={{
+                  borderRadius: '5px',
+                  marginLeft: '8px',
+                  padding: 0,
+                  color: 'inherit',
+                  backgroundColor: selectedMenuItem === 'Invoice' ? '#C7DBA0' : 'rgb(247,247,247)',
+                  '&:hover': {
+                    backgroundColor: selectedMenuItem === 'Invoice' ? '#C7DBA0' : 'rgb(247,247,247)'
+                  }
+                }}
+              >
+                <ListItemIcon
+                  sx={{
+                    color: selectedMenuItem === 'Invoice' ? '#779E40' : 'inherit',
+                    backgroundColor: selectedMenuItem === 'Invoice' ? '#779E40' : 'inherit',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    marginRight: '0.5rem',
+                    borderRadius: '5px',
+                    width: '30px',
+                    height: '30px'
+                  }}
+                >
+                  <EmojiPeopleIcon
+                    className={`${selectedMenuItem === 'Invoice' ? 'text-white' : 'bg-stone-100'}`}
+                    sx={{ fontSize: '20px' }}
+                  />
+                </ListItemIcon>
+                <ListItemText primary="INVOICE" />
+              </ListItem>
+              <ListItem
+                button
+                onClick={() => handleMenuItemClick('Quotation')}
+                sx={{
+                  borderRadius: '5px',
+                  marginLeft: '8px',
+                  padding: 0,
+                  color: 'inherit',
+                  backgroundColor: selectedMenuItem === 'Quotation' ? '#C7DBA0' : 'rgb(247,247,247)',
+                  '&:hover': {
+                    backgroundColor: selectedMenuItem === 'Quotation' ? '#C7DBA0' : 'rgb(247,247,247)'
+                  }
+                }}
+              >
+                <ListItemIcon
+                  sx={{
+                    color: selectedMenuItem === 'Quotation' ? '#779E40' : 'inherit',
+                    backgroundColor: selectedMenuItem === 'Quotation' ? '#779E40' : 'inherit',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    marginRight: '0.5rem',
+                    borderRadius: '5px',
+                    width: '30px',
+                    height: '30px'
+                  }}
+                >
+                  <RequestQuoteIcon
+                    className={`${selectedMenuItem === 'Quotation' ? 'text-white' : 'bg-stone-100'}`}
+                    sx={{ fontSize: '20px' }}
+                  />
+                </ListItemIcon>
+                <ListItemText primary="QUOTATION" />
+              </ListItem>
               <ListItem
                 button
                 onClick={() => handleMenuItemClick('Payment_Receipts')}
